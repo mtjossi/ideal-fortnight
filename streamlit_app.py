@@ -277,9 +277,9 @@ if model_choice == '3':
 if model_choice == 'Suggested':
     st.subheader("Suggested:")
 
-    st.write("1) 10 x 200 Pack with 1 free 100 Pack")
-    st.write("2) 1 x 1000 Pack with 1 free 100 Pack")
     st.write("Shift cost of SMS to client, keep cost of WhatsApp, email using in-house service")
+    st.write("Average cost to send SMS: $0.076")
+    st.write("So ask for upfront payment of $10 for SMS service, which can be refunded if they don't use it. Assuming transfer fee is free for us.")
     st.write("1) 10 x 200 Pack with 1 free 100 Pack @ $0.035/action")
     st.write("2) 1 x 1000 Pack with 1 free 100 Pack @ $0.035/action")
 
