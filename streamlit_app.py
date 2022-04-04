@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 
 st.title('Pricing Models')
 
-model_choice = st.radio("Select Models:", ['1', '2', '3'])
+model_choice = st.radio("Select Models:", ['1', '2', '3', 'Suggested'])
 
 ac = np.arange(1,50001)
 
@@ -53,6 +53,8 @@ if model_choice == '1':
     fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['profit2'][:10000], name='profit w/o WA', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
+
+    st.write("No discounts, and Actions are purchased in packs of 1000")
     ppa2 = st.slider("Test Price per Action:", min_value=0.00, max_value=.1, value=0.030, step=0.005, key=2)
     income_list2 = np.array([])
     income2 = ppa2*1000
@@ -84,6 +86,7 @@ if model_choice == '1':
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['income'], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['total_cost'], name='total_cost', mode='lines', line={'color':'red'}))
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['profit'], name='profit', mode='lines', line={'color':'green'}))
+    fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['profit2'], name='profit w/o WA', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
 if model_choice == '2':
@@ -257,3 +260,9 @@ if model_choice == '3':
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit'], name='profit', mode='lines', line={'color':'green'}))
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit2'], name='profit w/o WA', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig2)
+
+
+if model_choice == 'Suggested':
+    st.subheader("Suggested:")
+    st.write("1) 10 x 200 Pack with 1 free 100 Pack")
+    st.write("2) 1 x 1000 Pack with 1 free 100 Pack")
