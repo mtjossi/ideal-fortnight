@@ -52,6 +52,7 @@ if model_choice == '1':
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
 
+    st.write("Displaying only first 10k actions")
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
@@ -90,6 +91,7 @@ if model_choice == '1':
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
+    st.write("Displaying only first 10k actions")
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['income'], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['total_cost'], name='total_cost', mode='lines', line={'color':'red'}))
@@ -140,6 +142,7 @@ if model_choice == '2':
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
+    st.write("Displaying only first 10k actions")
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
@@ -236,6 +239,7 @@ if model_choice == '3':
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
+    st.write("Displaying only first 10k actions")
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
@@ -293,9 +297,11 @@ if model_choice == '3':
 if model_choice == 'Suggested':
     st.subheader("Suggested:")
 
-    st.write("Shift cost of SMS to client, keep cost of WhatsApp, email using in-house service")
+    st.write("Shift cost of all third-party services to customer")
     st.write("Average cost to send SMS: $0.076")
-    st.write("So ask for upfront payment of $10 for SMS service, which can be refunded if they don't use it. Assuming transfer fee is free for us.")
+    st.write(f"Average cost to send WhatsApp message: ${0.0088+0.005}")
+    st.write("Average cost to send email: $0.00185")
+    st.write("So ask for upfront payment in blocks $10 for 3P service, which cannot be refunded, but no expiration date.")
     st.write("1) 10 x 200 Pack with 1 free 100 Pack @ $0.035/action")
     st.write("2) 1 x 1000 Pack with 1 free 100 Pack @ $0.035/action")
 
@@ -346,6 +352,7 @@ if model_choice == 'Suggested':
     st.success(f"Maximum Profit After 1st Free Pack: ${np.round(profit_4, 2)} / ${2000*ppa}")
     st.success(f"Average Profit Margin: {np.round(np.mean([min_prof, max_prof]))}%")
 
+    st.write("Displaying only first 10k actions")
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
