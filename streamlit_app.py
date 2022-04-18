@@ -88,7 +88,7 @@ if model_choice == '1':
     a2.metric('Profit without costs', value=f"{np.round(df_1000_no['profit2'].tail(1).values[0], 2)}%")
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
-    a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
+    a5.metric('Pack Price', value=f"${ppa2*1000:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     st.write("Displaying only first 10k actions")
@@ -184,7 +184,7 @@ if model_choice == '2':
     a2.metric('Profit without costs', value=f"{np.round(df_1000_disc['profit2'].tail(1).values[0], 2)}%")
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
-    a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
+    a5.metric('Pack Price', value=f"${ppa2*1000:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig2 = go.Figure()
@@ -282,7 +282,7 @@ if model_choice == '3':
     a2.metric('Profit without costs', value=f"{np.round(df_1000_100['profit2'].tail(1).values[0], 2)}%")
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
-    a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
+    a5.metric('Pack Price', value=f"${ppa2*1000:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig2 = go.Figure()
@@ -348,9 +348,8 @@ if model_choice == 'Suggested':
 
     min_prof = np.round(df_200_100['profit'].tail(1).values[0], 2)
     max_prof = np.round(df_200_100['profit2'].tail(1).values[0], 2)
-    st.success(f"Minimum Profit After 1st Free Pack: ${np.round(profit_3, 2)} / ${2000*ppa}")
-    st.success(f"Maximum Profit After 1st Free Pack: ${np.round(profit_4, 2)} / ${2000*ppa}")
-    st.success(f"Average Profit Margin: {np.round(np.mean([min_prof, max_prof]))}%")
+    st.success(f"Profit with Costs After 1st Free Pack: \${np.round(profit_3, 2)} / \${2000*ppa} = {(profit_3/(2000*ppa) *100):.2f}%")
+    st.success(f"Profit without Costs After 1st Free Pack: \${np.round(profit_4, 2)} / \${2000*ppa} = {(profit_4/(2000*ppa) *100):.2f}%")
 
     st.write("Displaying only first 10k actions")
     fig = go.Figure()
@@ -396,14 +395,13 @@ if model_choice == 'Suggested':
     a2.metric('Profit without costs', value=f"{np.round(df_1000_100['profit2'].tail(1).values[0], 2)}%")
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
-    a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
+    a5.metric('Pack Price', value=f"${ppa2*1000:.2f}")
     st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     min_prof2 = np.round(df_1000_100['profit'].tail(1).values[0], 2)
     max_prof2 = np.round(df_1000_100['profit2'].tail(1).values[0], 2)
-    st.success(f"Minimum Profit After 1st Free Pack: ${np.round(profit_3_2, 2)} / ${1000*ppa2}")
-    st.success(f"Maximum Profit After 1st Free Pack: ${np.round(profit_4_2, 2)} / ${1000*ppa2}")
-    st.success(f"Average Profit Margin: {np.round(np.mean([min_prof2, max_prof2]))}%")
+    st.success(f"Profit with Costs After 1st Free Pack: \${np.round(profit_3_2, 2)} / \${1000*ppa2}  = {(profit_3_2/(1000*ppa2) *100):.2f}%")
+    st.success(f"Profit without Costs After 1st Free Pack: \${np.round(profit_4_2, 2)} / \${1000*ppa2} = {(profit_4_2/(1000*ppa2) *100):.2f}%")
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['income'], name='income', mode='lines', line={'color':'blue'}))
