@@ -49,7 +49,7 @@ if model_choice == '1':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue  email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
 
     fig = go.Figure()
@@ -88,7 +88,7 @@ if model_choice == '1':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['income'], name='income', mode='lines', line={'color':'blue'}))
@@ -138,7 +138,7 @@ if model_choice == '2':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
@@ -182,7 +182,7 @@ if model_choice == '2':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['income'], name='income', mode='lines', line={'color':'blue'}))
@@ -234,7 +234,7 @@ if model_choice == '3':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
@@ -279,7 +279,7 @@ if model_choice == '3':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['income'], name='income', mode='lines', line={'color':'blue'}))
@@ -338,7 +338,7 @@ if model_choice == 'Suggested':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     min_prof = np.round(df_200_100['profit'].tail(1).values[0], 2)
     max_prof = np.round(df_200_100['profit2'].tail(1).values[0], 2)
@@ -390,7 +390,7 @@ if model_choice == 'Suggested':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
 
     min_prof2 = np.round(df_1000_100['profit'].tail(1).values[0], 2)
     max_prof2 = np.round(df_1000_100['profit2'].tail(1).values[0], 2)
