@@ -38,7 +38,7 @@ if model_choice == '1':
                   'income':income_list})
     cpa = np.linspace(0.0033, max_cpa, 50000)
     df_200_no['action_cost'] = cpa * df_200_no['actions']
-    df_200_no['wa_cost'] = (0.005+0.00185) * df_200_no['actions']
+    df_200_no['wa_cost'] = ((0.0088+0.005)+0.00185) * df_200_no['actions']
     df_200_no['total_cost'] = df_200_no['action_cost'] + df_200_no['wa_cost']
     df_200_no['profit'] = ((df_200_no['income'] - df_200_no['total_cost'])/df_200_no['income'])*100
     df_200_no['profit2'] = ((df_200_no['income'] - df_200_no['action_cost'])/df_200_no['income'])*100
@@ -49,7 +49,7 @@ if model_choice == '1':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
 
     fig = go.Figure()
@@ -77,7 +77,7 @@ if model_choice == '1':
     df_1000_no = pd.DataFrame({'actions':ac,
                   'income':income_list2})
     df_1000_no['action_cost'] = cpa * df_1000_no['actions']
-    df_1000_no['wa_cost'] = (0.005+0.00185) * df_1000_no['actions']
+    df_1000_no['wa_cost'] = ((0.0088+0.005)+0.00185) * df_1000_no['actions']
     df_1000_no['total_cost'] = df_1000_no['action_cost'] + df_1000_no['wa_cost']
     df_1000_no['profit'] = ((df_1000_no['income'] - df_1000_no['total_cost'])/df_1000_no['income'])*100
     df_1000_no['profit2'] = ((df_1000_no['income'] - df_1000_no['action_cost'])/df_1000_no['income'])*100
@@ -88,7 +88,7 @@ if model_choice == '1':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['income'], name='income', mode='lines', line={'color':'blue'}))
@@ -127,7 +127,7 @@ if model_choice == '2':
                   'income':income_list})
     cpa = np.linspace(0.0033, max_cpa, 50000)
     df_200_disc['action_cost'] = cpa * df_200_disc['actions']
-    df_200_disc['wa_cost'] = (0.005+0.00185) * df_200_disc['actions']
+    df_200_disc['wa_cost'] = ((0.0088+0.005)+0.00185) * df_200_disc['actions']
     df_200_disc['total_cost'] = df_200_disc['action_cost'] + df_200_disc['wa_cost']
     df_200_disc['profit'] = ((df_200_disc['income'] - df_200_disc['total_cost'])/df_200_disc['income'])*100
     df_200_disc['profit2'] = ((df_200_disc['income'] - df_200_disc['action_cost'])/df_200_disc['income'])*100
@@ -138,7 +138,7 @@ if model_choice == '2':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
@@ -171,7 +171,7 @@ if model_choice == '2':
                   'income':income_list2})
 
     df_1000_disc['action_cost'] = cpa * df_1000_disc['actions']
-    df_1000_disc['wa_cost'] = (0.005+0.00185) * df_1000_disc['actions']
+    df_1000_disc['wa_cost'] = ((0.0088+0.005)+0.00185) * df_1000_disc['actions']
     df_1000_disc['total_cost'] = df_1000_disc['action_cost'] + df_1000_disc['wa_cost']
     df_1000_disc['profit'] = ((df_1000_disc['income'] - df_1000_disc['total_cost'])/df_1000_disc['income'])*100
     df_1000_disc['profit2'] = ((df_1000_disc['income'] - df_1000_disc['action_cost'])/df_1000_disc['income'])*100
@@ -182,7 +182,7 @@ if model_choice == '2':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['income'], name='income', mode='lines', line={'color':'blue'}))
@@ -223,7 +223,7 @@ if model_choice == '3':
                   'income':income_list})
     cpa1 = np.linspace(0.0033, max_cpa, 50000)
     df_200_100['action_cost'] = cpa1[:47800] * df_200_100['actions']
-    df_200_100['wa_cost'] = (0.005+0.00185) * df_200_100['actions']
+    df_200_100['wa_cost'] = ((0.0088+0.005)+0.00185) * df_200_100['actions']
     df_200_100['total_cost'] = df_200_100['action_cost'] + df_200_100['wa_cost']
     df_200_100['profit'] = ((df_200_100['income'] - df_200_100['total_cost'])/df_200_100['income'])*100
     df_200_100['profit2'] = ((df_200_100['income'] - df_200_100['action_cost'])/df_200_100['income'])*100
@@ -234,7 +234,7 @@ if model_choice == '3':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
@@ -268,7 +268,7 @@ if model_choice == '3':
 
     cpa2 = np.linspace(0.0033, max_cpa, 50000)
     df_1000_100['action_cost'] = cpa2[:46500] * df_1000_100['actions']
-    df_1000_100['wa_cost'] = (0.005+0.00185) * df_1000_100['actions']
+    df_1000_100['wa_cost'] = ((0.0088+0.005)+0.00185) * df_1000_100['actions']
     df_1000_100['total_cost'] = df_1000_100['action_cost'] + df_1000_100['wa_cost']
     df_1000_100['profit'] = ((df_1000_100['income'] - df_1000_100['total_cost'])/df_1000_100['income'])*100
     df_1000_100['profit2'] = ((df_1000_100['income'] - df_1000_100['action_cost'])/df_1000_100['income'])*100
@@ -279,7 +279,7 @@ if model_choice == '3':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['income'], name='income', mode='lines', line={'color':'blue'}))
@@ -325,7 +325,7 @@ if model_choice == 'Suggested':
 
     cpa1 = np.linspace(0.0033, max_cpa, 50000)
     df_200_100['action_cost'] = cpa1[:47800] * df_200_100['actions']
-    df_200_100['wa_cost'] = (0.005+0.00185) * df_200_100['actions']
+    df_200_100['wa_cost'] = ((0.0088+0.005)+0.00185) * df_200_100['actions']
     df_200_100['total_cost'] = df_200_100['action_cost'] + df_200_100['wa_cost']
     df_200_100['profit'] = ((df_200_100['income'] - df_200_100['total_cost'])/df_200_100['income'])*100
     df_200_100['profit2'] = ((df_200_100['income'] - df_200_100['action_cost'])/df_200_100['income'])*100
@@ -338,7 +338,7 @@ if model_choice == 'Suggested':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     min_prof = np.round(df_200_100['profit'].tail(1).values[0], 2)
     max_prof = np.round(df_200_100['profit2'].tail(1).values[0], 2)
@@ -377,7 +377,7 @@ if model_choice == 'Suggested':
                   'income':income_list2})
     cpa2 = np.linspace(0.0033, max_cpa, 50000)
     df_1000_100['action_cost'] = cpa2[:46500] * df_1000_100['actions']
-    df_1000_100['wa_cost'] = (0.005+0.00185) * df_1000_100['actions']
+    df_1000_100['wa_cost'] = ((0.0088+0.005)+0.00185) * df_1000_100['actions']
     df_1000_100['total_cost'] = df_1000_100['action_cost'] + df_1000_100['wa_cost']
     df_1000_100['profit'] = ((df_1000_100['income'] - df_1000_100['total_cost'])/df_1000_100['income'])*100
     df_1000_100['profit2'] = ((df_1000_100['income'] - df_1000_100['action_cost'])/df_1000_100['income'])*100
@@ -390,7 +390,7 @@ if model_choice == 'Suggested':
     a3.metric('Price per Action', value=f"{ppa2:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa2*200:.2f}")
-    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue email (\$0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005 + \$0.0088) + SendInBlue email (\$0.00185)")
 
     min_prof2 = np.round(df_1000_100['profit'].tail(1).values[0], 2)
     max_prof2 = np.round(df_1000_100['profit2'].tail(1).values[0], 2)
