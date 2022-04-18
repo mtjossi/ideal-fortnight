@@ -49,7 +49,7 @@ if model_choice == '1':
     a3.metric('Price per Action', value=f"{ppa:.3f}")
     a4.metric('Max Cost per Action', value=f"{max_cpa:.4f}")
     a5.metric('Pack Price', value=f"${ppa*200:.2f}")
-    st.write("Costs = Twilio WhatsApp ($0.005) + SendInBlue email ($0.00185)")
+    st.write("Costs = Twilio WhatsApp (\$0.005) + SendInBlue  email ($0.00185)")
 
 
     fig = go.Figure()
