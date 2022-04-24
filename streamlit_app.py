@@ -3,12 +3,13 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from PIL import Image
 
 import plotly.graph_objects as go
 
 
 st.title('Pricing Models')
-
+st.write('<style>div.row-widget.stRadio > div{flex-direction:row;justify-content: center} </style>', unsafe_allow_html=True)
 model_choice = st.radio("Select Models:", ['1', '2', '3', 'Suggested'])
 
 ac = np.arange(1,50001)
@@ -57,7 +58,7 @@ if model_choice == '1':
     fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
     fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['profit'][:10000], name='profit', mode='lines', line={'color':'green'}))
-    fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['profit2'][:10000], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig.add_trace(go.Scatter(x=df_200_no['actions'][:10000], y=df_200_no['profit2'][:10000], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
 
@@ -96,7 +97,7 @@ if model_choice == '1':
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['income'], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['total_cost'], name='total_cost', mode='lines', line={'color':'red'}))
     fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['profit'], name='profit', mode='lines', line={'color':'green'}))
-    fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['profit2'], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig.add_trace(go.Scatter(x=df_1000_no['actions'], y=df_1000_no['profit2'], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
 ###################################2
@@ -147,7 +148,7 @@ if model_choice == '2':
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
     fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['profit'][:10000], name='profit', mode='lines', line={'color':'green'}))
-    fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['profit2'][:10000], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig.add_trace(go.Scatter(x=df_200_disc['actions'][:10000], y=df_200_disc['profit2'][:10000], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
 
@@ -168,8 +169,9 @@ if model_choice == '2':
             for i in range(200):
                 income_list2 = np.append(income_list2, income2)
             income2 += increment2
-            counter = 0
+            counter = 1
 
+    
     df_1000_disc = pd.DataFrame({'actions':ac,
                   'income':income_list2})
 
@@ -191,7 +193,7 @@ if model_choice == '2':
     fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['income'], name='income', mode='lines', line={'color':'blue'}))
     fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['total_cost'], name='total_cost', mode='lines', line={'color':'red'}))
     fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['profit'], name='profit', mode='lines', line={'color':'green'}))
-    fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['profit2'], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig2.add_trace(go.Scatter(x=df_1000_disc['actions'], y=df_1000_disc['profit2'], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig2)
 
 ###################################3
@@ -244,7 +246,7 @@ if model_choice == '3':
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['profit'][:10000], name='profit', mode='lines', line={'color':'green'}))
-    fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['profit2'][:10000], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['profit2'][:10000], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
 
@@ -265,13 +267,14 @@ if model_choice == '3':
             for i in range(100):
                 income_list2 = np.append(income_list2, income2)
             income2 += increment2
-            counter = 0
-
-    df_1000_100 = pd.DataFrame({'actions':ac[:46500],
+            counter = 1
+    
+    st.write(len(ac), len(income_list2))
+    df_1000_100 = pd.DataFrame({'actions':ac[:45900],
                   'income':income_list2})
 
     cpa2 = np.linspace(0.0033, max_cpa, 50000)
-    df_1000_100['action_cost'] = cpa2[:46500] * df_1000_100['actions']
+    df_1000_100['action_cost'] = cpa2[:45900] * df_1000_100['actions']
     df_1000_100['wa_cost'] = ((0.0088+0.005)+0.00185) * df_1000_100['actions']
     df_1000_100['total_cost'] = df_1000_100['action_cost'] + df_1000_100['wa_cost']
     df_1000_100['profit'] = ((df_1000_100['income'] - df_1000_100['total_cost'])/df_1000_100['income'])*100
@@ -289,7 +292,7 @@ if model_choice == '3':
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['income'], name='income', mode='lines', line={'color':'blue'}))
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['total_cost'], name='total_cost', mode='lines', line={'color':'red'}))
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit'], name='profit', mode='lines', line={'color':'green'}))
-    fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit2'], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit2'], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig2)
 
 ###################################4
@@ -297,17 +300,23 @@ if model_choice == '3':
 if model_choice == 'Suggested':
     st.subheader("Suggested:")
 
-    st.write("Shift cost of all third-party services to customer")
-    st.write("Average cost to send SMS: $0.076")
-    st.write(f"Average cost to send WhatsApp message: ${0.0088+0.005}")
-    st.write("Average cost to send email: $0.00185")
-    st.write("So ask for upfront payment in blocks $10 for 3P service, which cannot be refunded, but no expiration date.")
-    st.write("1) 10 x 200 Pack with 1 free 100 Pack @ $0.035/action")
-    st.write("2) 1 x 1000 Pack with 1 free 100 Pack @ $0.035/action")
+    st.markdown("Shift cost of all third-party services to customer. \n"
+    "- Average cost to send SMS: $0.076\n"
+    f"- Average cost to send WhatsApp message: ${0.0088+0.005}\n"
+    "- Average cost to send email: $0.00185\n\n"
+    "So ask for upfront payment in blocks $10 for 3P service, which cannot be refunded, but no expiration date.\n"
+    "- 1) 200 Pack @ $0.035/action. 1 stamp.\n"
+    "- 2) 1000 Pack @ $0.035/action. 10 stamps."
+    )
 
-
-    ppa = st.slider("Test Price per Action:", min_value=0.0, max_value=.1, value=0.035, step=0.005, key=7)
-    max_cpa = st.number_input("Max Cost per Action", min_value=0.001, max_value=0.1, value=0.0054)
+    image_ac = Image.open("./action_credits.png")
+    image_ec = Image.open("./extra_credits.png")
+    st.image(image=image_ac)
+    st.image(image=image_ec)
+    # ppa = st.slider("Test Price per Action:", min_value=0.0, max_value=.1, value=0.035, step=0.005, key=7)
+    # max_cpa = st.number_input("Max Cost per Action", min_value=0.001, max_value=0.1, value=0.0054)
+    ppa = 0.035
+    max_cpa=0.0054
     income_list = np.array([])
     income = ppa*200
     increment = ppa*200
@@ -325,7 +334,8 @@ if model_choice == 'Suggested':
             counter = 0
 
 
-    st.subheader("1) 10 x 200 Pack with 1 free 100 Pack")
+    st.subheader("1) 200 Action Credit Pack")
+    st.write("1 stamp")
     df_200_100 = pd.DataFrame({'actions':ac[:47800],
                   'income':income_list})
 
@@ -356,20 +366,22 @@ if model_choice == 'Suggested':
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['income'][:10000], name='income', mode='lines', line={'color':'blue'}))
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['total_cost'][:10000], name='total_cost', mode='lines', line={'color':'red'}))
     fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['profit'][:10000], name='profit', mode='lines', line={'color':'green'}))
-    fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['profit2'][:10000], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig.add_trace(go.Scatter(x=df_200_100['actions'][:10000], y=df_200_100['profit2'][:10000], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig)
 
 
-    st.subheader("2) 1 x 1000 Pack with 1 free 100 Pack")
+    st.subheader("2) 1000 Action Credit Pack")
+    st.write("10 stamps")
     income_list2 = np.array([])
-    ppa2 = st.slider("Test Price per Action:", min_value=0.0, max_value=.1, value=0.035, step=0.005, key=8)
+    # ppa2 = st.slider("Test Price per Action:", min_value=0.0, max_value=.1, value=0.035, step=0.005, key=8)
+    ppa2 = 0.035
     income2 = ppa2*1000
     increment2 = ppa2*1000
 
     counter = 1
-    for i in np.arange(200,50001, 200):
-        if counter <= 5:
-            for i in range(200):
+    for i in np.arange(200,50001, 100):
+        if counter <= 10:
+            for i in range(100):
                 income_list2 = np.append(income_list2, income2)
     #         income += increment
             counter +=1
@@ -377,12 +389,13 @@ if model_choice == 'Suggested':
             for i in range(100):
                 income_list2 = np.append(income_list2, income2)
             income2 += increment2
-            counter = 0
+            counter = 1
 
-    df_1000_100 = pd.DataFrame({'actions':ac[:46500],
+    
+    df_1000_100 = pd.DataFrame({'actions':ac[:49900],
                   'income':income_list2})
     cpa2 = np.linspace(0.0033, max_cpa, 50000)
-    df_1000_100['action_cost'] = cpa2[:46500] * df_1000_100['actions']
+    df_1000_100['action_cost'] = cpa2[:49900] * df_1000_100['actions']
     df_1000_100['wa_cost'] = ((0.0088+0.005)+0.00185) * df_1000_100['actions']
     df_1000_100['total_cost'] = df_1000_100['action_cost'] + df_1000_100['wa_cost']
     df_1000_100['profit'] = ((df_1000_100['income'] - df_1000_100['total_cost'])/df_1000_100['income'])*100
@@ -407,5 +420,5 @@ if model_choice == 'Suggested':
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['income'], name='income', mode='lines', line={'color':'blue'}))
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['total_cost'], name='total_cost', mode='lines', line={'color':'red'}))
     fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit'], name='profit', mode='lines', line={'color':'green'}))
-    fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit2'], name='profit w/o WA', mode='lines', line={'color':'orange'}))
+    fig2.add_trace(go.Scatter(x=df_1000_100['actions'], y=df_1000_100['profit2'], name='profit w/o Costs', mode='lines', line={'color':'orange'}))
     st.plotly_chart(fig2)
